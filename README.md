@@ -25,6 +25,6 @@ How this works:
   
   Using a "wait-and-see" function in Selenium (webdriver.Wait), will throw a TimeoutException when an element is not found in time. I use this to tell the script when an address is invalidated. 
   
-  
+  As for typos: Yes. This script does NOT account for typos. As does the USPS. USPS won't send a mail-piece to 123 Mian St even if you meant it for 123 Main St! 
 
   
