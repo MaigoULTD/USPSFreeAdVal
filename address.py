@@ -25,10 +25,10 @@ saveindex=0
 index=44
 while index != 64:    
     ## Need to fix this part
-    tAddress = ((address_sheet.cell(row=index,column=6)).value) #Get address at row
-    tApt = ((address_sheet.cell(row=index,column=7)).value)#Get apartments. Uncomment to use apt sheet
-    tCity = ((address_sheet.cell(row=index,column=8)).value) #Get city at row
-    tZipbyaddress = ((address_sheet.cell(row=index,column=10)).value) #Get Zipcode
+    tAddress = ((address_sheet.cell(row=index,column=1)).value) #Get address at row
+    tApt = ((address_sheet.cell(row=index,column=2)).value)#Get apartments. Uncomment to use apt sheet
+    tCity = ((address_sheet.cell(row=index,column=3)).value) #Get city at row
+    tZipbyaddress = ((address_sheet.cell(row=index,column=4)).value) #Get Zipcode
     ##
 
 
@@ -43,9 +43,9 @@ while index != 64:
     try:
         element = WebDriverWait(driver,10).until(EC.visibility_of_element_located((By.CLASS_NAME,"zipcode-result-address")))
     except (TimeoutException):
-        address_sheet.cell(row=index, column=18).value='UNVERIFIED' # Selenium throws a TimeoutException if no element is found in the specified time. Excepting this will let python enter values into the excel sheet. 
+        address_sheet.cell(row=index, column=5).value='UNVERIFIED' # Selenium throws a TimeoutException if no element is found in the specified time. Excepting this will let python enter values into the excel sheet. 
     else:
-        address_sheet.cell(row=index, column=18).value='Verified'
+        address_sheet.cell(row=index, column=5).value='Verified'
     
     index=index+1
     driver.refresh()
