@@ -24,6 +24,7 @@ address_sheet = workbook['WORKSHEET'] #Load sheet for apartments. Uncomment to u
 saveindex=0
 index=44
 while index != 64:    
+    
     ## Need to fix this part
     tAddress = ((address_sheet.cell(row=index,column=1)).value) #Get address at row
     tApt = ((address_sheet.cell(row=index,column=2)).value)#Get apartments. Uncomment to use apt sheet
@@ -35,9 +36,8 @@ while index != 64:
     driver.find_element_by_id("tAddress").send_keys(tAddress)
     driver.find_element_by_id("tCity").send_keys(tCity)
     driver.find_element_by_id("tApt").send_keys(tApt)
-    # driver.find_element_by_id("tState").send_keys("apt") # Dropdown menu. Might not need it if Zipcode is legitimate. Would help with verification. 
     driver.find_element_by_id("tZip-byaddress").send_keys(tZipbyaddress)
-    driver.find_element_by_id("zip-by-address").click() # Shitty ID name. LMAO
+    driver.find_element_by_id("zip-by-address").click()
 
     #Because the Address List page is dynamically loaded, trying to wait until Selenium can located the zipcode-result-address section, which loads if an address is found. Timelimit is 10 seconds.
     try:
@@ -49,8 +49,8 @@ while index != 64:
     
     index=index+1
     driver.refresh()
-    #optional. change depending on how frequent you want the script to save. Default is every 20.
-    if saveindex == 20:
+    #optional. change depending on how frequent you want the script to save. Default is every 20. Set to 0 if you don't want to save. 
+    if saveindex <= 20: #CHANGE THIS NUMBER 
         workbook.save('WORKBOOK')
         saveindex = 0
     else:
