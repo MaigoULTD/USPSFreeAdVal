@@ -18,12 +18,12 @@ driver.get("https://tools.usps.com/zip-code-lookup.htm?byaddress") #Get USPS Pag
 
 
 workbook = openpyxl.load_workbook('WORKBOOK')#Load excel sheet
-#address_sheet = workbook['addresses']#Load sheet for addresses without apts or units.
+
 
 address_sheet = workbook['WORKSHEET'] #Load sheet for apartments. Uncomment to use with script.
 saveindex=0
-index=44
-while index != 64:    
+index=0 #start number
+while index != 800:  #end number  
     
     ## Need to fix this part
     tAddress = ((address_sheet.cell(row=index,column=1)).value) #Get address at row
